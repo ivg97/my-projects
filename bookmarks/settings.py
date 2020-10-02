@@ -25,7 +25,7 @@ SECRET_KEY = 's^!tl#3ikmt!9st&qj*-w$lfp4olk+c5we)xghc3=jd5l&8!+c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '192.168.0.13']
+ALLOWED_HOSTS = ['localhost', '192.168.0.13', 'ivg97.com', '127.0.0.1']
 
 
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 
 ]
 
@@ -126,6 +127,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/' # base media file, from which are formed address files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') # path where will be keep files
 
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
@@ -138,4 +140,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
 ]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1019941021779008' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '5124b945ff360b593e70b68b529e13b3' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_SCORE = ['email']
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '128448704804-8t4f58j8pos237n4piu17keaposjrcml.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'k3GNSUz4szLaPTs2_66oRw0m'
+
